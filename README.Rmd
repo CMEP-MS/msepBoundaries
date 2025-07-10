@@ -33,7 +33,17 @@ You can install the development version of msepBoundaries from [GitHub](https://
 pak::pak("CMEP-MS/msepBoundaries")
 ```
 
-## Examples  
+## Contents  
+
+`msepBoundaries` currently contains 8 spatial data frames. They are various combinations of:  
+
+-  Outline, as the combination of HUC4 units 0317 and 0318 ("outline") vs. Subbasins, which are the HUC8s contained in those HUC4s ("subbasins").  
+-  Entire region ("full") vs. the region excluding the Mississippi Sound itself ("land").  
+-  Entire watershed vs. only within the state of Mississippi ("_ms_").  
+
+So `outline_full` contains everything. `outline_land` contains everything except the Mississippi Sound. `outline_ms_full` contains everything within the state of MS. `outline_ms_land` is that, but without the Mississippi Sound itself. Data frames starting with `subbasins` follow the same pattern, but are split into HUC8s.  
+
+## What it looks like  
 
 Here are a couple of examples. First load the libraries and use `{tigris}` to get state outlines (`{tigris}` uses boundary data from the US Census Bureau):  
 
