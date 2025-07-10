@@ -9,9 +9,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
   fig.width = 6,
-  fig.height = 4
+  fig.height = 5,
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
@@ -34,14 +35,16 @@ pak::pak("CMEP-MS/msepBoundaries")
 
 ## Examples  
 
-Here are a couple of examples. First load the libraries:  
+Here are a couple of examples. First load the libraries and use `{tigris}` to get state outlines (`{tigris}` uses boundary data from the US Census Bureau):  
 
-```{r libraries}
+```{r libraries, warning = FALSE, message = FALSE}
 library(msepBoundaries)
-library(ggplot2)
 library(dplyr)
 library(tigris)
 options(tigris_use_cache = TRUE)
+library(ggplot2)
+
+# get the outlines of MS, AL, and LA
 lamsal <- states(cb = TRUE) |> 
     filter(NAME %in% c("Mississippi", "Alabama", "Louisiana"))
 ```
@@ -50,14 +53,15 @@ lamsal <- states(cb = TRUE) |>
 
 The outline of the entire watershed.  
 
-```{r}
+```{r, fig.width = 5, fig.height = 4.5}
 ggplot() +
     geom_sf(data = outline_full,
             fill = "blue",
-            alpha = 0.5) +
+            alpha = 0.6) +
     geom_sf(data = lamsal,
             fill = NA) +
-    theme_void()
+    theme_void() +
+    ggtitle("Full watershed")
 ```
 
 
@@ -65,17 +69,21 @@ ggplot() +
 
 Subbasins (HUC8) for the entire watershed.
 
-The outline of the entire watershed.  
 
 ```{r}
 ggplot() +
     geom_sf(data = subbasins_full,
             aes(fill = name),
-            alpha = 0.5) +
+            alpha = 0.7) +
     geom_sf(data = lamsal,
             fill = NA) +
-    theme_void()
+    scale_fill_viridis_d() +
+    theme_void() +
+    labs(title = "Full watershed",
+         fill = "Subbasin")
 ```
+
+
 
 ### Land-only subbasins, and only Mississippi  
 
@@ -85,8 +93,12 @@ In case we want to ignore the large area of water that is the Mississippi Sound,
 ggplot() +
     geom_sf(data = subbasins_ms_land,
             aes(fill = name),
-            alpha = 0.5) +
+            alpha = 0.7) +
     geom_sf(data = lamsal,
             fill = NA) +
-    theme_void()
+    theme_void() +
+    scale_fill_viridis_d() +
+    labs(title = "MS-only, cartographic boundaries",
+         fill = "Subbasin")
 ```
+
