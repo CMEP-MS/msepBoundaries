@@ -1,18 +1,26 @@
 Package: msepBoundaries
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Provides Spatial Boundaries for the MSEP Area
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Kim", "Cressman",
+      email = "kc2741@msstate.edu",
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Description: Provides several versions of boundary files.
+    Entire watershed vs. only the portion in MS (we are currently only funded to work inside MS boundaries).
+    Outline vs. including sub-basins.
+    Sound included vs. land/drainage basin-only.
+License: CC0
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 URL: https://github.com/CMEP-MS/msepBoundaries
 BugReports: https://github.com/CMEP-MS/msepBoundaries/issues
+Depends: 
+    R (>= 3.5)
+RoxygenNote: 7.3.2
+Suggests: 
+    sf

@@ -1,0 +1,92 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.width = 6,
+  fig.height = 4
+)
+```
+
+# msepBoundaries
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The `msepBoundaries` package is a collection of several spatial data frames delineating Mississippi Sound Estuary Program (MSEP) boundaries in different ways.  
+
+
+## Installation
+
+You can install the development version of msepBoundaries from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("CMEP-MS/msepBoundaries")
+```
+
+## Examples  
+
+Here are a couple of examples. First load the libraries:  
+
+```{r libraries}
+library(msepBoundaries)
+library(ggplot2)
+library(dplyr)
+library(tigris)
+options(tigris_use_cache = TRUE)
+lamsal <- states(cb = TRUE) |> 
+    filter(NAME %in% c("Mississippi", "Alabama", "Louisiana"))
+```
+
+### Full Outline  
+
+The outline of the entire watershed.  
+
+```{r}
+ggplot() +
+    geom_sf(data = outline_full,
+            fill = "blue",
+            alpha = 0.5) +
+    geom_sf(data = lamsal,
+            fill = NA) +
+    theme_void()
+```
+
+
+### Subbasins  
+
+Subbasins (HUC8) for the entire watershed.
+
+The outline of the entire watershed.  
+
+```{r}
+ggplot() +
+    geom_sf(data = subbasins_full,
+            aes(fill = name),
+            alpha = 0.5) +
+    geom_sf(data = lamsal,
+            fill = NA) +
+    theme_void()
+```
+
+### Land-only subbasins, and only Mississippi  
+
+In case we want to ignore the large area of water that is the Mississippi Sound, and restrict the area to the state of Mississippi.  
+
+```{r}
+ggplot() +
+    geom_sf(data = subbasins_ms_land,
+            aes(fill = name),
+            alpha = 0.5) +
+    geom_sf(data = lamsal,
+            fill = NA) +
+    theme_void()
+```
