@@ -19,7 +19,7 @@ National Hydrography Dataset, as downloaded from USGS on 6/4/2025 from \url{http
 subbasins_ms_land
 }
 \description{
-The MSEP is made up of HUC4s 0317 (Pearl River watershed) and 0318 (Pascagoula River watershed). This is the combination of all HUC8 units within them, clipped to cartographic boundaries (i.e. following the contours of land and islands) within only Mississippi (as MSEP's current funding only allows work within the state).
+The Mississippi Sound Watershed is made up of HUC4s 0317 (Pascagoula River basin) and 0318 (Pearl River basin). This is the combination of all HUC8 units within them, clipped to cartographic boundaries (i.e. following the contours of land and islands) within only Mississippi (as MSEP's current funding only allows work within the state).
 }
 \details{
 The raw data were subsetted to the geopackage file \code{msep_hucs.gpkg} using the script \code{subset_NHD.R}. The subset was further processed into this final form, using the \code{tigris} package for state and cartographic boundary delineations, in \code{make_boundaries.R}.

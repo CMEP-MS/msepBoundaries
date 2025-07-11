@@ -1,6 +1,6 @@
 #' Subbasins (HUC8s) of the MS-only portion of the Mississippi Sound Watershed, excluding the Mississippi Sound itself
 #'
-#' The MSEP is made up of HUC4s 0317 (Pearl River watershed) and 0318 (Pascagoula River watershed). This is the combination of all HUC8 units within them, clipped to cartographic boundaries (i.e. following the contours of land and islands) within only Mississippi (as MSEP's current funding only allows work within the state).
+#' The Mississippi Sound Watershed is made up of HUC4s 0317 (Pascagoula River basin) and 0318 (Pearl River basin). This is the combination of all HUC8 units within them, clipped to cartographic boundaries (i.e. following the contours of land and islands) within only Mississippi (as MSEP's current funding only allows work within the state).
 #'
 #' @format A Simple feature collection with 14 features (rows) and 2 fields.
 #' \describe{

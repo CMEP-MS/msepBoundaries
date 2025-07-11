@@ -1,6 +1,6 @@
 #' Outline of the Mississippi Sound watershed, excluding the Mississippi Sound itself
 #'
-#' The MSEP is made up of HUC4s 0317 (Pearl River watershed) and 0318 (Pascagoula River watershed). This is the outline of their union, clipped to cartographic boundaries (i.e. following the contours of land and islands).
+#' The Mississippi Sound Watershed is made up of HUC4s 0317 (Pascagoula River basin) and 0318 (Pearl River basin). This is the outline of their union, clipped to cartographic boundaries (i.e. following the contours of land and islands).
 #'
 #' @format A Simple feature collection with 1 feature and 0 fields.
 #' \describe{
