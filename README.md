@@ -8,7 +8,10 @@
 
 The `msepBoundaries` package is a collection of several spatial data
 frames delineating Mississippi Sound Estuary Program (MSEP) boundaries
-in different ways.
+in different ways. Watershed boundaries use the [National Hydrography
+Dataset](https://www.usgs.gov/national-hydrography/national-hydrography-dataset)
+and state and cartographic boundaries are based on the `{tigris}`
+package’s boundaries from the US Census Bureau.
 
 ## Installation
 
@@ -41,8 +44,7 @@ without the Mississippi Sound itself. Data frames starting with
 ## What it looks like
 
 Here are a couple of examples. First load the libraries and use
-`{tigris}` to get state outlines (`{tigris}` uses boundary data from the
-US Census Bureau):
+`{tigris}` to get state outlines:
 
 ``` r
 library(msepBoundaries)

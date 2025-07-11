@@ -4,9 +4,9 @@
 #'
 #' @format A Simple feature collection with 1 feature and 0 fields.
 #' \describe{
-#'   \item{geometry}{POLYGON of the MSEP watershed outline after clipping to cartographic boundaries of only Mississippi.}
+#'   \item{geometry}{MULTIPOLYGON of the MSEP watershed outline after clipping to cartographic boundaries of only Mississippi.}
 #' }
-#' @source National Hydrographic Dataset, as downloaded from USGS on 6/4/2025 from \url{https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/State/GPKG/NHD_H_Mississippi_State_GPKG.zip}.
+#' @source National Hydrography Dataset, as downloaded from USGS on 6/4/2025 from \url{https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/State/GPKG/NHD_H_Mississippi_State_GPKG.zip}.
 #'
 #' @details
 #' The raw data were subsetted to the geopackage file \code{msep_hucs.gpkg} using the script \code{subset_NHD.R}. The subset was further processed into this final form, using the \code{tigris} package for state and cartographic boundary delineations, in \code{make_boundaries.R}.

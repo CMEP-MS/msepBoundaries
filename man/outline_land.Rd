@@ -7,11 +7,11 @@
 \format{
 A Simple feature collection with 1 feature and 0 fields.
 \describe{
-  \item{geometry}{POLYGON of the MSEP watershed outline after clipping to cartographic boundaries.}
+  \item{geometry}{MULTIPOLYGON of the MSEP watershed outline after clipping to cartographic boundaries.}
 }
 }
 \source{
-National Hydrographic Dataset, as downloaded from USGS on 6/4/2025 from \url{https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/State/GPKG/NHD_H_Mississippi_State_GPKG.zip}.
+National Hydrography Dataset, as downloaded from USGS on 6/4/2025 from \url{https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/State/GPKG/NHD_H_Mississippi_State_GPKG.zip}.
 }
 \usage{
 outline_land
