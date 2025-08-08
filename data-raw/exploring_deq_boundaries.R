@@ -1,4 +1,6 @@
 library(sf)
+library(mapview)
+library(dplyr)
 
 fl <- here::here("data-raw",
                  "DEQ_Basins",
@@ -96,3 +98,70 @@ mapview(coastal12,
         alpha.regions = 0.1) +
 mapview(deq_coastal12,
         zcol = "HUC_10_NAME")
+
+deq_gom <- dplyr::filter(deq_coastal8, HUC_8 == "03170999")
+mapview(coastal12,
+        color = "blue") +
+    mapview(deq_gom,
+            col.regions = "red",
+            color = "red",
+            alpha.regions = 0.1)
+
+# new basins ----
+new_basins <- msep_huc8 |>
+    mutate(huc4 = stringr::str_sub(huc8, 1, 4),
+           basin = case_when(huc8 == "03170009" ~ "Coastal Streams",
+                             huc4 == "0317" ~ "Pascagoula River",
+                             huc4 == "0318" ~ "Pearl River")) |>
+    select(basin, geom) |>
+    group_by(basin) |>
+    summarize(geom = st_union(geom)) |>
+    ungroup()
+
+# equivalent to DEQ's Gulf of Mexico, 03170999, but
+# extending into AL. debated some about the 2nd huc12; it's in a
+# different huc10 than the first, but it is Gulf-ward of Dauphin Island:
+gulf_offshore <- coastal12 |>
+    filter(huc12 %in% c("031700091500", "031700090203")) |>
+    select(geom) |>
+    st_union() |>
+    st_as_sf() |>
+    mutate(basin = "Gulf of Mexico") |>
+    rename(geom = x)
+mapview(gulf_offshore)
+
+
+# split out Gulf of Mexico from Coastal Streams ----
+coastal_streams <- new_basins |>
+    filter(basin == "Coastal Streams")
+pearl.pasc <- new_basins |>
+    filter(basin != "Coastal Streams")
+coastal_trimmed <- st_difference(coastal_streams, gulf_offshore) |>
+    select(-basin.1)
+
+combined <- bind_rows(pearl.pasc,
+                      coastal_trimmed,
+                      gulf_offshore)
+combined$notes <- c(
+    "HUC 0317, minus the HUC8 03170009; the latter forms DEQ's Coastal Streams Basin and Gulf of Mexico unit. The Mississippi portion of this polygon is MDEQ's Pascagoula River Basin.",  # Pascagoula
+    "HUC 0318 (complete). The Mississippi portion of this polygon is MDEQ's Pearl River Basin.",  # Pearl
+    "HUC 03170009, minus the HUC12s that comprise the Gulf of Mexico unit (see note for Gulf of Mexico). The Mississippi portion of this polygon is MDEQ's Coastal Streams Basin.",  # Coastal Streams
+    "union of HUC12s 031700091500 and 031700090203. The Mississippi portion of this polygon is MDEQ's Gulf of Mexico basin."  # Gulf of Mexico
+    )
+
+# new basins are as defined above
+
+# new subbasins ----
+# split Pearl and Pascagoula into HUC8s;
+# us the split out Gulf of Mexico from Coastal Streams versions
+new_subbasins <- msep_huc8 |>
+    filter(huc8 != "03170009") |>
+    mutate(huc4 = stringr::str_sub(huc8, 1, 4),
+           basin = case_when(huc4 == "0317" ~ "Pascagoula River",
+                             huc4 == "0318" ~ "Pearl River")) |>
+    select(basin, name, geom) |>
+    st_as_sf()
+
+new_subbasins <- bind_rows(new_subbasins, coastal_trimmed, gulf_offshore)
+
+
