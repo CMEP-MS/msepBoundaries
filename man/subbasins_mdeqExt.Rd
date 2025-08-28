@@ -22,9 +22,9 @@ subbasins_mdeqExt
 The Mississippi Sound Watershed is made up of HUC4s 0317 (Pascagoula River basin) and 0318 (Pearl River basin). The Mississippi Department of Environmental Quality recognizes a portion of HUC 0317, specifically the HUC8 03170009, as a separate basin, the Coastal Streams Basin. Because waterways in that HUC8 do not in fact flow into the Pascagoula River, it makes sense for the MSEP to recognize this delineation as well.
 }
 \details{
-Additionally, MDEQ recognizes the portion of the Coastal Streams Basin on the south side of the Mississippi Barrier Islands as a subbasin named "Gulf of Mexico".
+Additionally, MDEQ recognizes the portion of the Coastal Streams Basin on the south side of the Mississippi Barrier Islands as a subbasin named "Gulf of Mexico", changed here to "Gulf of America"; and the waters of the Mississippi Sound as "Coastal Offshore". Boundaries in this file were generated using a combination of HUC levels and may not exactly match MDEQ's at the subbasin level.
 
-MDEQ only delineates these watersheds within the state of MS, however, so MSEP has made the current delineation by subsetting HUCs from the National Hydrography Dataset, and extending the Coastal Streams Basin into Louisiana and Alabama based on the HUC8 of 03170009. The Gulf of Mexico subbasin is the union of HUC12s 031700091500 (the MS portion of this HUC is MDEQ's HUC 03170999) and 031700090203 (offshore of Dauphin Island, AL).
+MDEQ only delineates these watersheds within the state of MS, however, so MSEP has made the current delineation by subsetting HUCs from the National Hydrography Dataset, and extending the Coastal Streams Basin into Louisiana and Alabama based on the HUC8 of 03170009. The Gulf of America subbasin is HUC10 0317000915.
 
 
 The raw data were subsetted to the geopackage file \code{msep_hucs.gpkg} using the script \code{subset_NHD.R}. The subset was further processed into this final form in \code{make_mdeqish_boundaries.R}.

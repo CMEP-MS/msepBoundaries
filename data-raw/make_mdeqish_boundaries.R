@@ -16,7 +16,11 @@ msep_huc8 <- st_read(fl,
 msep_huc12 <- st_read(fl,
                       layer = "huc12")
 coastal12 <- msep_huc12 |>
-    filter(stringr::str_starts(huc12, "03170009"))
+    filter(stringr::str_starts(huc12, "03170009")) |>
+    mutate(huc10 = stringr::str_sub(huc12, 1, 10))
+
+# huc10 0317000915 is DEQ's 'Gulf' basin
+# DEQ's Coastal Offshore is huc10s 914, 908, 907, 903, 902
 
 # basins ----
 # new basins ----
@@ -34,23 +38,24 @@ usethis::use_data(basins_mdeqExt, overwrite = TRUE, compress = "xz")
 
 
 # subbasins ----
-# do all the trimming
 
-# equivalent to DEQ's Gulf of Mexico, 03170999, but
-# extending into AL. debated some about the 2nd huc12; it's in a
-# different huc10 than the first, but it is Gulf-ward of Dauphin Island:
-gulf_offshore <- coastal12 |>
-    filter(huc12 %in% c("031700091500", "031700090203")) |>
-    select(geom) |>
-    st_union() |>
+# huc10 0317000915 is DEQ's 'Gulf' basin
+# DEQ's Coastal Offshore is huc10s 914, 908, 907, 903, 902
+
+# this is not quite right - it's grabbing some onshore huc12s and still lumping them with offshore
+# 031700090301|031700090701|031700090801|031700091401
+
+subbasins_coastal <- coastal12 |>
+    mutate(basin = case_when(huc12 %in% c("031700090301", "031700090701", "031700090801", "031700091401") ~ "Coastal Streams",
+                             str_ends(huc10, "0915") ~ "Gulf of America",
+                             str_ends(huc10, "914|908|907|903|902") ~ "Coastal Offshore",
+                             str_starts(huc12, "03170009") ~ "Coastal Streams",
+                             .default = name)) |>
     st_as_sf() |>
-    mutate(basin = "Gulf of Mexico") |>
-    rename(geom = x)
-# split out Gulf of Mexico from Coastal Streams
-coastal_streams <- basins_mdeqExt |>
-    filter(basin == "Coastal Streams")
-coastal_trimmed <- st_difference(coastal_streams, gulf_offshore) |>
-    select(-basin.1)
+    group_by(basin) |>
+    summarize(geom = st_union(geom))
+
+
 
 # work with the huc8s for Pearl and Pascagoula, then join
 # the coastal and Gulf stuff
@@ -62,7 +67,7 @@ subbasins_mdeqExt <- msep_huc8 |>
     select(basin, name, geom) |>
     st_as_sf()
 
-subbasins_mdeqExt <- bind_rows(subbasins_mdeqExt, coastal_trimmed, gulf_offshore)
+subbasins_mdeqExt <- bind_rows(subbasins_mdeqExt, subbasins_coastal)
 
 usethis::use_data(subbasins_mdeqExt, overwrite = TRUE, compress = "xz")
 
