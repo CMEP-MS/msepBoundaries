@@ -157,21 +157,3 @@ mapview(subbasins_ms_land,
         lwd = 2,
         legend = NULL)
 ```
-
-
-# MDEQ divisions  
-
-```{r}
-mapview(basins_mdeqExt,
-        alpha.regions = 0,
-        color = col1,
-        lwd = 2,
-        legend = NULL)
-
-mapview(subbasins_mdeqExt,
-        alpha.regions = 0,
-        color = col1,
-        lwd = 2,
-        legend = NULL)
-```
-
