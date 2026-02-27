@@ -7,7 +7,7 @@
 \format{
 A Simple feature collection with 1 feature and 0 fields.
 \describe{
-  \item{geometry}{MULTIPOLYGON of the MSEP watershed outline after clipping to cartographic boundaries of only Mississippi.}
+\item{\code{geometry}}{MULTIPOLYGON of the MSEP watershed outline after clipping to cartographic boundaries of only Mississippi.}
 }
 }
 \source{

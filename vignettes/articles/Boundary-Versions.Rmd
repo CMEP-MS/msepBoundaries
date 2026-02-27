@@ -1,0 +1,177 @@
+---
+title: "Boundary Versions"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r setup}
+library(msepBoundaries)
+library(sf)
+library(mapview)
+
+msep_colors <- c("#583a55",
+                 "#729574",
+                 "#82acb2",
+                 "#20434a",
+                 "#d26c3a",
+                 "#fedd7f")
+
+col1 <- msep_colors[1]
+col2 <- msep_colors[5]
+```
+
+This package contains various combinations of boundaries for:  
+
+-  *All 3 states vs. MS-only.* MSEP only works within MS, but the watershed extends into the neighboring states of AL and LA. It could be useful to see boundaries and subbasins either way.  
+-  *Full vs. land-only.* Mostly, we probably want the entire outline of the watershed; but if we're calculating areas of land-based metrics, we may not want the waters of the Mississippi Sound itself (and some of the bigger bays) included in the area. The land-only versions of these boundaries are for the latter case.   
+
+# Outlines  
+
+
+## Full watershed (all 3 states)  
+
+### full: `outline_full`  
+
+```{r}
+mapview(outline_full,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+### land only: `outline_land`  
+
+```{r}
+mapview(outline_land,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+## MS only  
+
+### full: `outline_ms_full`  
+
+```{r}
+mapview(outline_ms_full,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+### land only: `outline_ms_land`  
+
+```{r}
+mapview(outline_ms_land,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+# MDEQ divisions  
+
+The Mississippi Department of Environmental Quality (MDEQ) defines three major basins in their regulatory activities. The Coastal Streams Basin, which in the National Hydrography Dataset is contained within the Pascagoula Basin, is separated out at a higher level. This makes a lot of sense, as many of the waters near the coast drain into bays that drain into the Sound, and not into the Pascagoula River. 
+
+The boundaries in this section are meant to treat the Coastal Streams Basin separately. As MDEQ only operates in the state of MS, the boundaries based on MDEQ's HUC-10 divisions were extended into AL and LA.  
+
+### Basins: `basins_mdeqExt`  
+
+```{r}
+mapview(basins_mdeqExt,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+### Subbasins: `subbasins_mdeqExt`
+
+```{r}
+mapview(subbasins_mdeqExt,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+# Subbasin delineations  
+
+
+## Full watershed (all 3 states)  
+
+### full: `subbasins_full`  
+
+```{r}
+mapview(subbasins_full,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+### land only: `subbasins_land`  
+
+```{r}
+mapview(subbasins_land,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+## MS only  
+
+### full: `subbasins_ms_full`  
+
+```{r}
+mapview(subbasins_ms_full,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+### land only: `subbasins_ms_land`  
+
+```{r}
+mapview(subbasins_ms_land,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+# MDEQ divisions  
+
+```{r}
+mapview(basins_mdeqExt,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+
+mapview(subbasins_mdeqExt,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+

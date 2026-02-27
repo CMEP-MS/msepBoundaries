@@ -7,9 +7,9 @@
 \format{
 A Simple feature collection with 14 features (rows) and 2 fields.
 \describe{
-  \item{huc8}{character, HUC8 ID.}
-  \item{name}{character, name of the subbasin.}
-  \item{geometry}{POLYGON of each subbasin.}
+\item{\code{huc8}}{character, HUC8 ID.}
+\item{\code{name}}{character, name of the subbasin.}
+\item{\code{geometry}}{POLYGON of each subbasin.}
 }
 }
 \source{

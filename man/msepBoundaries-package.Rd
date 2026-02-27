@@ -12,6 +12,7 @@ Provides several versions of boundary files.
 Useful links:
 \itemize{
   \item \url{https://github.com/CMEP-MS/msepBoundaries}
+  \item \url{https://cmep-ms.github.io/msepBoundaries/}
   \item Report bugs at \url{https://github.com/CMEP-MS/msepBoundaries/issues}
 }
 

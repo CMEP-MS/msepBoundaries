@@ -8,16 +8,16 @@
 #'
 #' @format A Simple feature collection with 15 features and 2 fields.
 #' \describe{
-#'   \item{basin}{Basin, according to MDEQ designation.}
-#'   \item{name}{Subbasin name, if provided as a name in the HUC from the NHD.}
-#'   \item{geometry}{POLYGON of the basin.}
+#'   \item{`basin`}{Basin, according to MDEQ designation.}
+#'   \item{`name`}{Subbasin name, if provided as a name in the HUC from the NHD.}
+#'   \item{`geometry`}{POLYGON of the basin.}
 #' }
-#' @source National Hydrography Dataset, as downloaded from USGS on 6/4/2025 from \url{https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/State/GPKG/NHD_H_Mississippi_State_GPKG.zip}.
+#' @source National Hydrography Dataset, as downloaded from USGS on 6/4/2025 from <https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/State/GPKG/NHD_H_Mississippi_State_GPKG.zip>.
 #'
 #' @details
-#' The raw data were subsetted to the geopackage file \code{msep_hucs.gpkg} using the script \code{subset_NHD.R}. The subset was further processed into this final form in \code{make_mdeqish_boundaries.R}.
-#' Both scripts and the subsetted geopackage file are available in the \code{data-raw} directory of the package repository at:
-#' \url{https://github.com/CMEP-MS/msepBoundaries}.
+#' The raw data were subsetted to the geopackage file `msep_hucs.gpkg` using the script `subset_NHD.R`. The subset was further processed into this final form in `make_mdeqish_boundaries.R`.
+#' Both scripts and the subsetted geopackage file are available in the `data-raw` directory of the package repository at:
+#' <https://github.com/CMEP-MS/msepBoundaries>.
 #'
 
 "subbasins_mdeqExt"

@@ -7,7 +7,7 @@
 \format{
 A Simple feature collection with 1 feature and 0 fields.
 \describe{
-  \item{geometry}{POLYGON of the MSEP watershed outline, clipped to MS boundaries.}
+\item{\code{geometry}}{POLYGON of the MSEP watershed outline, clipped to MS boundaries.}
 }
 }
 \source{

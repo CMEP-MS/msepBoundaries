@@ -7,8 +7,8 @@
 \format{
 A Simple feature collection with 3 features and 1 field.
 \describe{
-  \item{basin}{Basin, according to MDEQ designation.}
-  \item{geometry}{POLYGON of the basin.}
+\item{\code{basin}}{Basin, according to MDEQ designation.}
+\item{\code{geometry}}{POLYGON of the basin.}
 }
 }
 \source{
@@ -22,7 +22,6 @@ The Mississippi Sound Watershed is made up of HUC4s 0317 (Pascagoula River basin
 }
 \details{
 MDEQ only delineates these watersheds within the state of MS, however, so MSEP has made the current delineation by subsetting HUCs from the National Hydrography Dataset, and extending the Coastal Streams Basin into Louisiana and Alabama based on the HUC8 of 03170009.
-
 
 The raw data were subsetted to the geopackage file \code{msep_hucs.gpkg} using the script \code{subset_NHD.R}. The subset was further processed into this final form in \code{make_mdeqish_boundaries.R}.
 Both scripts and the subsetted geopackage file are available in the \code{data-raw} directory of the package repository at:

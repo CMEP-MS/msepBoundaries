@@ -17,10 +17,12 @@ License: CC0
 Encoding: UTF-8
 LazyData: true
 LazyDataCompression: xz
-URL: https://github.com/CMEP-MS/msepBoundaries
+URL: https://github.com/CMEP-MS/msepBoundaries, https://cmep-ms.github.io/msepBoundaries/
 BugReports: https://github.com/CMEP-MS/msepBoundaries/issues
 Depends: 
     R (>= 3.5)
 RoxygenNote: 7.3.2
 Suggests: 
     sf
+Roxygen: list(markdown = TRUE)
+Config/Needs/website: rmarkdown
