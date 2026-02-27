@@ -56,5 +56,3 @@ LA.
 #### full: `subbasins_ms_full`
 
 #### land only: `subbasins_ms_land`
-
-## MDEQ divisions
