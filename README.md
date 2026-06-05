@@ -25,7 +25,7 @@ pak::pak("CMEP-MS/msepBoundaries")
 
 ## Contents
 
-`msepBoundaries` currently contains 8 spatial data frames. They are
+`msepBoundaries` currently contains 11 spatial data frames. They are
 various combinations of:
 
 - Outline, as the combination of HUC4 units 0317 and 0318 (“outline”)
@@ -33,13 +33,18 @@ various combinations of:
   (“subbasins”).  
 - Entire region (“full”) vs. the region excluding the Mississippi Sound
   itself (“land”).  
-- Entire watershed vs. only within the state of Mississippi (“*ms*”).
+- Entire watershed vs. only within the state of Mississippi (“*ms*”).  
+- Additional divisions: HUC4, HUC10, and HUC12.
 
 So `outline_full` contains everything. `outline_land` contains
 everything except the Mississippi Sound. `outline_ms_full` contains
 everything within the state of MS. `outline_ms_land` is that, but
 without the Mississippi Sound itself. Data frames starting with
 `subbasins` follow the same pattern, but are split into HUC8s.
+
+See the article [Boundary
+Versions](https://cmep-ms.github.io/msepBoundaries/articles/Boundary-Versions.html)
+for even more detail than that provided below.
 
 ## What it looks like
 

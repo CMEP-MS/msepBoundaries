@@ -15,6 +15,8 @@ msep_huc8 <- st_read(fl,
                      layer = "huc8")
 msep_huc12 <- st_read(fl,
                       layer = "huc12")
+msep_huc10 <- st_read(fl,
+                      layer = "huc10")
 coastal12 <- msep_huc12 |>
     filter(stringr::str_starts(huc12, "03170009")) |>
     mutate(huc10 = stringr::str_sub(huc12, 1, 10))

@@ -26,7 +26,7 @@ outline_ms_land <- st_intersection(outline_full, ms_cb)
 usethis::use_data(outline_ms_land, overwrite = TRUE, compress = "xz")
 
 
-# subbasins
+# subbasins: huc8 ----
 subbasins <- st_read(fl, layer = "huc8")
 
 subbasins_full <- subbasins |>
@@ -42,3 +42,32 @@ usethis::use_data(subbasins_ms_full, overwrite = TRUE, compress = "xz")
 # trimmed to MS, land
 subbasins_ms_land <- st_intersection(subbasins_full, ms_cb)
 usethis::use_data(subbasins_ms_land, overwrite = TRUE, compress = "xz")
+
+
+
+# huc4s ----
+huc4 <- st_read(fl, layer = "huc4")
+
+huc4_full <- huc4 |>
+    select(huc4, name, geometry = geom) |>
+    st_as_sf()
+usethis::use_data(huc4_full, overwrite = TRUE, compress = "xz")
+
+
+# huc10s ----
+huc10 <- st_read(fl, layer = "huc10")
+
+huc10_full <- huc10 |>
+    select(huc10, name, hutype, hutype_description, geometry = geom) |>
+    st_as_sf()
+usethis::use_data(huc10_full, overwrite = TRUE, compress = "xz")
+
+
+# huc12s ----
+huc12 <- st_read(fl, layer = "huc12")
+
+huc12_full <- huc12 |>
+    select(huc12, name, hutype, hutype_description,
+           humod, tohuc, geometry = geom) |>
+    st_as_sf()
+usethis::use_data(huc12_full, overwrite = TRUE, compress = "xz")

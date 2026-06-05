@@ -26,6 +26,7 @@ msep_colors <- c("#583a55",
 
 col1 <- msep_colors[1]
 col2 <- msep_colors[5]
+col3 <- msep_colors[2]
 ```
 
 This package contains various combinations of boundaries for:  
@@ -47,6 +48,7 @@ mapview(outline_full,
         lwd = 2,
         legend = NULL)
 ```
+
 
 
 ### land only: `outline_land`  
@@ -156,4 +158,59 @@ mapview(subbasins_ms_land,
         color = col1,
         lwd = 2,
         legend = NULL)
+```
+
+
+# Other divisions  
+
+### HUC4:  `huc4_full`  
+
+HUC4s are the river basins. MDEQ splits the Coastal Streams Basin out from the Pascagoula River Basin, but this spatial object contains only the HUC4s.  
+
+```{r}
+mapview(huc4_full,
+        alpha.regions = 0,
+        color = col1,
+        lwd = 2,
+        legend = NULL)
+```
+
+
+### HUC10: `huc10_full`  
+
+HUC10s outlined in green, with HUC4s outlined in purple.
+
+```{r}
+mapview(huc10_full,
+        alpha.regions = 0,
+        color = col3,
+        lwd = 2,
+        legend = NULL) +
+    mapview(huc4_full,
+            alpha.regions = 0,
+            color = col1,
+            lwd = 2.5,
+            legend = NULL)
+```
+
+### HUC12: `huc12_full`  
+
+HUC10s outlined in green, with HUC8s (subbasins) outlined in purple and HUC4s in orange.
+
+```{r}
+mapview(huc12_full,
+        alpha.regions = 0,
+        color = col3,
+        lwd = 1,
+        legend = NULL) +
+    mapview(subbasins_full,
+            alpha.regions = 0,
+            color = col1,
+            lwd = 2,
+            legend = NULL) +
+    mapview(huc4_full,
+            alpha.regions = 0,
+            color = col2,
+            lwd = 3,
+            legend = NULL)
 ```
