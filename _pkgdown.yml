@@ -1,4 +1,7 @@
 url: https://cmep-ms.github.io/msepBoundaries/
+
+llm-docs: false
+
 template:
   bootstrap: 5
 
