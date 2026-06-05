@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Provides Spatial Boundaries for the MSEP Area • msepBoundaries</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Provides Spatial Boundaries for the MSEP Area">
 <meta name="description" content="Provides several versions of boundary files. Entire watershed vs. only the portion in MS (we are currently only funded to work inside MS boundaries). Outline vs. including sub-basins. Sound included vs. land/drainage basin-only.">
@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">msepBoundaries</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,15 +69,18 @@
 <div class="section level2">
 <h2 id="contents">Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
 </h2>
-<p><code>msepBoundaries</code> currently contains 8 spatial data frames. They are various combinations of:</p>
+<p><code>msepBoundaries</code> currently contains 11 spatial data frames. They are various combinations of:</p>
 <ul>
 <li>Outline, as the combination of HUC4 units 0317 and 0318 (“outline”) vs. Subbasins, which are the HUC8s contained in those HUC4s (“subbasins”).<br>
 </li>
 <li>Entire region (“full”) vs. the region excluding the Mississippi Sound itself (“land”).<br>
 </li>
-<li>Entire watershed vs. only within the state of Mississippi (“<em>ms</em>”).</li>
+<li>Entire watershed vs. only within the state of Mississippi (“<em>ms</em>”).<br>
+</li>
+<li>Additional divisions: HUC4, HUC10, and HUC12.</li>
 </ul>
 <p>So <code>outline_full</code> contains everything. <code>outline_land</code> contains everything except the Mississippi Sound. <code>outline_ms_full</code> contains everything within the state of MS. <code>outline_ms_land</code> is that, but without the Mississippi Sound itself. Data frames starting with <code>subbasins</code> follow the same pattern, but are split into HUC8s.</p>
+<p>See the article <a href="https://cmep-ms.github.io/msepBoundaries/articles/Boundary-Versions.html">Boundary Versions</a> for even more detail than that provided below.</p>
 </div>
 <div class="section level2">
 <h2 id="what-it-looks-like">What it looks like<a class="anchor" aria-label="anchor" href="#what-it-looks-like"></a>
