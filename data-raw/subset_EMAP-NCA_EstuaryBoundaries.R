@@ -21,4 +21,4 @@ estuaryBoundaries_NCA <- estuaries %>%
 mapview::mapview(estuaryBoundaries_NCA)
 
 # 4. Save as .rda file in the 'data' directory
-usethis::use_data(estuaryBoundaries_NCA, overwrite = TRUE)
+usethis::use_data(estuaryBoundaries_NCA, overwrite = TRUE, compress = "xz")
