@@ -27,12 +27,16 @@ msep_colors <- c("#583a55",
 col1 <- msep_colors[1]
 col2 <- msep_colors[5]
 col3 <- msep_colors[2]
+col4 <- msep_colors[4]
+col5 <- msep_colors[3]
 ```
 
 This package contains various combinations of boundaries for:  
 
 -  *All 3 states vs. MS-only.* MSEP only works within MS, but the watershed extends into the neighboring states of AL and LA. It could be useful to see boundaries and subbasins either way.  
--  *Full vs. land-only.* Mostly, we probably want the entire outline of the watershed; but if we're calculating areas of land-based metrics, we may not want the waters of the Mississippi Sound itself (and some of the bigger bays) included in the area. The land-only versions of these boundaries are for the latter case.   
+-  *Full vs. land-only.* Mostly, we probably want the entire outline of the watershed; but if we're calculating areas of land-based metrics, we may not want the waters of the Mississippi Sound itself (and some of the bigger bays) included in the area. The land-only versions of these boundaries are for the latter case.  
+
+Additionally, divisions of the waterbodies (e.g. bays, tributaries) within the estuary system, based on EPA boundaries, are included as of version 0.4.0.
 
 # Outlines  
 
@@ -90,7 +94,7 @@ The Mississippi Department of Environmental Quality (MDEQ) defines three major b
 
 The boundaries in this section are meant to treat the Coastal Streams Basin separately. As MDEQ only operates in the state of MS, the boundaries based on MDEQ's HUC-10 divisions were extended into AL and LA.  
 
-### Basins: `basins_mdeqExt`  
+## Basins: `basins_mdeqExt`  
 
 ```{r}
 mapview(basins_mdeqExt,
@@ -100,7 +104,7 @@ mapview(basins_mdeqExt,
         legend = NULL)
 ```
 
-### Subbasins: `subbasins_mdeqExt`
+## Subbasins: `subbasins_mdeqExt`
 
 ```{r}
 mapview(subbasins_mdeqExt,
@@ -161,9 +165,9 @@ mapview(subbasins_ms_land,
 ```
 
 
-# Other divisions  
+# Other HUC divisions  
 
-### HUC4:  `huc4_full`  
+## HUC4:  `huc4_full`  
 
 HUC4s are the river basins. MDEQ splits the Coastal Streams Basin out from the Pascagoula River Basin, but this spatial object contains only the HUC4s.  
 
@@ -176,7 +180,7 @@ mapview(huc4_full,
 ```
 
 
-### HUC10: `huc10_full`  
+## HUC10: `huc10_full`  
 
 HUC10s outlined in green, with HUC4s outlined in purple.
 
@@ -193,7 +197,7 @@ mapview(huc10_full,
             legend = NULL)
 ```
 
-### HUC12: `huc12_full`  
+## HUC12: `huc12_full`  
 
 HUC10s outlined in green, with HUC8s (subbasins) outlined in purple and HUC4s in orange.
 
@@ -214,3 +218,16 @@ mapview(huc12_full,
             lwd = 3,
             legend = NULL)
 ```
+
+
+# Estuarine Waterbody Divisions  
+
+```{r}
+mapview(estuaryBoundaries_NCA,
+        alpha.regions = 0.2,
+        color = col4,
+        col.regions = col5,
+        lwd = 2,
+        legend = NULL)
+```
+

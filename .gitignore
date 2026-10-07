@@ -4,4 +4,5 @@
 .Ruserdata
 data-raw/NHD_H_Mississippi_State_GPKG/
 data-raw/DEQ_Basins/
+data-raw/EMAP-NCA_EstuaryBoundaries/
 docs
