@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 library(msepBoundaries)
 library(sf)
 library(mapview)
+library(mseptools)
 
 msep_colors <- c("#583a55",
                  "#729574",
@@ -29,6 +30,10 @@ col2 <- msep_colors[5]
 col3 <- msep_colors[2]
 col4 <- msep_colors[4]
 col5 <- msep_colors[3]
+
+boundary_simplify <- function(data, tol = 100){
+    st_simplify(data, dTolerance = tol)
+}
 ```
 
 This package contains various combinations of boundaries for:  
@@ -46,7 +51,7 @@ Additionally, divisions of the waterbodies (e.g. bays, tributaries) within the e
 ### full: `outline_full`  
 
 ```{r}
-mapview(outline_full,
+mapview_hydro(boundary_simplify(outline_full),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -58,7 +63,7 @@ mapview(outline_full,
 ### land only: `outline_land`  
 
 ```{r}
-mapview(outline_land,
+mapview_hydro(boundary_simplify(outline_land),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -71,7 +76,7 @@ mapview(outline_land,
 ### full: `outline_ms_full`  
 
 ```{r}
-mapview(outline_ms_full,
+mapview_hydro(boundary_simplify(outline_ms_full),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -81,7 +86,7 @@ mapview(outline_ms_full,
 ### land only: `outline_ms_land`  
 
 ```{r}
-mapview(outline_ms_land,
+mapview_hydro(boundary_simplify(outline_ms_land),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -97,7 +102,7 @@ The boundaries in this section are meant to treat the Coastal Streams Basin sepa
 ## Basins: `basins_mdeqExt`  
 
 ```{r}
-mapview(basins_mdeqExt,
+mapview_hydro(boundary_simplify(basins_mdeqExt),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -107,7 +112,7 @@ mapview(basins_mdeqExt,
 ## Subbasins: `subbasins_mdeqExt`
 
 ```{r}
-mapview(subbasins_mdeqExt,
+mapview_hydro(boundary_simplify(subbasins_mdeqExt),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -123,7 +128,7 @@ mapview(subbasins_mdeqExt,
 ### full: `subbasins_full`  
 
 ```{r}
-mapview(subbasins_full,
+mapview_hydro(boundary_simplify(subbasins_full),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -134,7 +139,7 @@ mapview(subbasins_full,
 ### land only: `subbasins_land`  
 
 ```{r}
-mapview(subbasins_land,
+mapview_hydro(boundary_simplify(subbasins_land),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -147,7 +152,7 @@ mapview(subbasins_land,
 ### full: `subbasins_ms_full`  
 
 ```{r}
-mapview(subbasins_ms_full,
+mapview_hydro(boundary_simplify(subbasins_ms_full),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -157,7 +162,7 @@ mapview(subbasins_ms_full,
 ### land only: `subbasins_ms_land`  
 
 ```{r}
-mapview(subbasins_ms_land,
+mapview_hydro(boundary_simplify(subbasins_ms_land),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -172,7 +177,7 @@ mapview(subbasins_ms_land,
 HUC4s are the river basins. MDEQ splits the Coastal Streams Basin out from the Pascagoula River Basin, but this spatial object contains only the HUC4s.  
 
 ```{r}
-mapview(huc4_full,
+mapview_hydro(boundary_simplify(huc4_full),
         alpha.regions = 0,
         color = col1,
         lwd = 2,
@@ -185,12 +190,12 @@ mapview(huc4_full,
 HUC10s outlined in green, with HUC4s outlined in purple.
 
 ```{r}
-mapview(huc10_full,
+mapview(boundary_simplify(huc10_full),
         alpha.regions = 0,
         color = col3,
         lwd = 2,
         legend = NULL) +
-    mapview(huc4_full,
+    mapview(boundary_simplify(huc4_full),
             alpha.regions = 0,
             color = col1,
             lwd = 2.5,
@@ -202,17 +207,17 @@ mapview(huc10_full,
 HUC10s outlined in green, with HUC8s (subbasins) outlined in purple and HUC4s in orange.
 
 ```{r}
-mapview(huc12_full,
+mapview(boundary_simplify(huc12_full),
         alpha.regions = 0,
         color = col3,
         lwd = 1,
         legend = NULL) +
-    mapview(subbasins_full,
+    mapview(boundary_simplify(subbasins_full),
             alpha.regions = 0,
             color = col1,
             lwd = 2,
             legend = NULL) +
-    mapview(huc4_full,
+    mapview(boundary_simplify(huc4_full),
             alpha.regions = 0,
             color = col2,
             lwd = 3,
@@ -223,7 +228,7 @@ mapview(huc12_full,
 # Estuarine Waterbody Divisions  
 
 ```{r}
-mapview(estuaryBoundaries_NCA,
+mapview_hydro(boundary_simplify(estuaryBoundaries_NCA),
         alpha.regions = 0.2,
         color = col4,
         col.regions = col5,
